@@ -52,6 +52,10 @@
         "source": "C:\\Users\\84911\\AndroidStudioProjects\\ToDo-Task-App-using-Java-in-Android-master\\app\\build\\generated\\res\\pngs\\debug\\drawable-ldpi\\ic_baseline_keyboard_backspace_24.png"
     },
     {
+        "merged": "C:\\Users\\84911\\AndroidStudioProjects\\ToDo-Task-App-using-Java-in-Android-master\\app\\build\\intermediates\\res\\merged\\debug\\drawable-v24_dollar64.png.flat",
+        "source": "C:\\Users\\84911\\AndroidStudioProjects\\ToDo-Task-App-using-Java-in-Android-master\\app\\src\\main\\res\\drawable-v24\\dollar64.png"
+    },
+    {
         "merged": "C:\\Users\\84911\\AndroidStudioProjects\\ToDo-Task-App-using-Java-in-Android-master\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi_ic_launcher_round.png.flat",
         "source": "C:\\Users\\84911\\AndroidStudioProjects\\ToDo-Task-App-using-Java-in-Android-master\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
     },

@@ -1645,6 +1645,7 @@ drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
 drawable dollar
+drawable dollar64
 drawable ic_baseline_add_circle_24
 drawable ic_baseline_calendar_today_24
 drawable ic_baseline_card_giftcard_24
@@ -1790,9 +1791,6 @@ id bottomAppBar
 id bottomNavigationView
 id bounce
 id btnRedeem
-id button10
-id button11
-id button9
 id buttonPanel
 id cancel_action
 id cancel_button
@@ -2095,7 +2093,6 @@ id textTop
 id text_input_end_icon
 id text_input_error_icon
 id text_input_start_icon
-id textb4cd
 id textinput_counter
 id textinput_error
 id textinput_helper_text

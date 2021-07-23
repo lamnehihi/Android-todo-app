@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.List;
 
 public class UserVouchers extends AppCompatActivity {
-    String[] descriptionData = {"10", "20", "30", "40"};
+    String[] descriptionData = {"0", "5", "10", "15", "20"};
     LinearLayout listVoucher;
     List<String> stringList;
     DBHelper mydb;
@@ -49,15 +49,29 @@ public class UserVouchers extends AppCompatActivity {
         textView = (TextView) findViewById(R.id.credit2);
         mydb = new DBHelper(this);
         credit = mydb.getCredit();
+        if(credit<5){
+            stateProgressBar.setCurrentStateNumber(StateProgressBar.StateNumber.ONE);
+        }
+        else if(credit>=5){
+            stateProgressBar.setCurrentStateNumber(StateProgressBar.StateNumber.TWO);
+        }else if(credit>=10){
+            stateProgressBar.setCurrentStateNumber(StateProgressBar.StateNumber.THREE);
+        }else if(credit>=15){
+            stateProgressBar.setCurrentStateNumber(StateProgressBar.StateNumber.FOUR);
+        }else if(credit>=20){
+            stateProgressBar.setCurrentStateNumber(StateProgressBar.StateNumber.FIVE);
+        }
+
 
         fetchVoucher();
     }
     public void fetchVoucher(){
         stringList = new ArrayList<>();
-
+        listVoucher.removeAllViews();
         textView.setText(credit+"");
         if(credit<5){
             btnRedeem.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
+            btnRedeem.setBackgroundColor(Color.GRAY);
             btnRedeem.setClickable(false);
         }else{
             btnRedeem.getBackground().setColorFilter(null);
@@ -71,6 +85,11 @@ public class UserVouchers extends AppCompatActivity {
                         loadDataList(cursor);
                     credit = mydb.getCredit();
                     textView.setText(credit+"");
+                    if(credit<5){
+                        btnRedeem.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
+                        btnRedeem.setBackgroundColor(Color.GRAY);
+                        btnRedeem.setClickable(false);
+                    }
                 }
             });
             mydb.updateCredit(-5);
@@ -82,10 +101,12 @@ public class UserVouchers extends AppCompatActivity {
 
     }
     public void loadDataList(Cursor cursor) {
+        stringList= new ArrayList<>();
+        listVoucher.removeAllViews();
         if (cursor != null) {
             cursor.moveToFirst();
             while (cursor.isAfterLast() == false) {
-                String vouch = cursor.getString(0).toString();
+                String vouch = cursor.getString(0).toString()+""+cursor.getString(1).toString();
                 stringList.add(vouch);
                 cursor.moveToNext();
             }

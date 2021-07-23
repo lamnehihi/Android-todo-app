@@ -58,20 +58,20 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:gravity="center_horizontal">
-        <TextView
-            android:id="@+id/textb4cd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="User's Credit: "
-            android:textColor="#FFFFFF"
-            android:textSize="23sp" />
-        <TextView
+
+            <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/credit2"
             android:text="24"
             android:textColor="#FFFFFF"
             android:textSize="24sp" />
+
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="4dp"
+                android:src="@drawable/dollar64" />
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
@@ -84,8 +84,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom"
                 app:spb_currentStateNumber="three"
-                app:spb_maxStateNumber="four"
-                app:spb_enableAllStatesCompleted="true"/>
+                app:spb_maxStateNumber="five"
+                app:spb_enableAllStatesCompleted="false"/>
 
         </LinearLayout>
         <LinearLayout
@@ -128,23 +128,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical" >
 
-                <Button
-                    android:id="@+id/button11"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Button" />
-
-                <Button
-                    android:id="@+id/button10"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Button" />
-
-                <Button
-                    android:id="@+id/button9"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Button" />
 
             </LinearLayout>
         </ScrollView>
