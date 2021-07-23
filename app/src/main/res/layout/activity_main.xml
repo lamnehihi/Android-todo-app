@@ -3,14 +3,50 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF">
+    android:background="#1C1D22">
 
+
+    <FrameLayout
+        android:id="@+id/your_placeholder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="80dp"
+
+        >
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:minHeight="30dp"
+            android:layoutDirection="rtl"
+            android:paddingRight="20dp"
+            >
+            <TextView
+                android:id="@+id/credit2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="23"
+                android:textColor="#ffffff"
+                android:textSize="15dp"
+                android:textStyle="bold"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                />
+
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:layout_gravity="center"
+                android:src="@drawable/dollar" />
+
+        </LinearLayout>
 
     <androidx.core.widget.NestedScrollView
+        android:layout_marginTop="30dp"
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         android:clipToPadding="false"
         android:isScrollContainer="false"
         android:visibility="gone"
@@ -32,18 +68,17 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="30dp"
-                    android:layout_marginTop="60dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="20dp"
                     android:text="Today's Tasks"
-                    android:textColor="#111111"
-                    android:textSize="27sp"
+                    android:textColor="#EC5D5D"
+                    android:textSize="23sp"
                     android:textStyle="bold" />
 
                 <com.frsarker.todotask.NoScrollListView
                     android:id="@+id/taskListToday"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:divider="#30CCCCCC"
+                    android:divider="#CDD1D5"
                     android:dividerHeight="1dp" />
 
             </LinearLayout>
@@ -53,25 +88,25 @@
                 android:id="@+id/tomorrowContainer"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                >
 
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="30dp"
-                    android:layout_marginTop="60dp"
-                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="20dp"
                     android:text="Tomorrow's Tasks"
-                    android:textColor="#111111"
-                    android:textSize="27sp"
+                    android:textColor="#EC5D5D"
+                    android:textSize="23sp"
                     android:textStyle="bold" />
 
                 <com.frsarker.todotask.NoScrollListView
                     android:id="@+id/taskListTomorrow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:divider="#30CCCCCC"
+                    android:divider="#CDD1D5"
                     android:dividerHeight="1dp" />
 
             </LinearLayout>
@@ -91,15 +126,15 @@
                     android:layout_marginTop="60dp"
                     android:layout_marginBottom="10dp"
                     android:text="Upcoming Tasks"
-                    android:textColor="#111111"
-                    android:textSize="27sp"
+                    android:textColor="#EC5D5D"
+                    android:textSize="23sp"
                     android:textStyle="bold" />
 
                 <com.frsarker.todotask.NoScrollListView
                     android:id="@+id/taskListUpcoming"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:divider="#30CCCCCC"
+                    android:divider="#CDD1D5"
                     android:dividerHeight="1dp" />
 
             </LinearLayout>
@@ -109,14 +144,15 @@
 
     </androidx.core.widget.NestedScrollView>
 
-
     <LinearLayout
         android:id="@+id/empty"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
         android:orientation="vertical"
-        android:padding="30dp"
+        android:layout_marginTop="30dp"
+        android:paddingLeft="30dp"
+        android:paddingTop="10dp"
         android:visibility="visible">
 
         <TextView
@@ -156,18 +192,40 @@
             android:paddingHorizontal="70dp"
             android:paddingVertical="15dp"
             android:text="Add New Task"
-            android:textColor="@drawable/radius_border_button_text" />
+            android:textColor="#000" />
 
     </LinearLayout>
+
+    </FrameLayout>
+
+    <com.google.android.material.bottomappbar.BottomAppBar
+        android:id="@+id/bottomAppBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        app:fabCradleMargin="10dp"
+        app:fabCradleRoundedCornerRadius="10dp"
+        app:fabCradleVerticalOffset="10dp"
+        >
+
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:id="@+id/bottomNavigationView"
+            layout_marginEnd="16dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:menu="@menu/botton_nav_menu"
+            />
+
+    </com.google.android.material.bottomappbar.BottomAppBar>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="end|bottom"
-        android:layout_margin="16dp"
         android:contentDescription="Add Task"
         android:onClick="openAddModifyTask"
-        android:src="@drawable/ic_fab_add" />
-
+        android:src="@drawable/ic_fab_add"
+        app:layout_anchor="@id/bottomAppBar"
+        android:backgroundTint="#EC5D5D"
+        />
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

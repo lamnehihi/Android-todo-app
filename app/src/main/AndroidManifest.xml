@@ -9,8 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/CustomTheme">
-        <activity android:name=".AddModifyTask"
-            android:windowSoftInputMode="adjustResize"></activity>
+        <activity android:name=".UserVouchers"></activity>
+        <activity
+            android:name=".AddModifyTask"
+            android:windowSoftInputMode="adjustResize" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

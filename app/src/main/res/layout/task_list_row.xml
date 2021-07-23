@@ -27,7 +27,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textColor="#222222"
+            android:textColor="#EC5D5D"
             android:text="Task Name"
             android:textStyle="normal"
             android:textSize="19sp"/>

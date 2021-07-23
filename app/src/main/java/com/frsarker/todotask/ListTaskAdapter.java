@@ -18,8 +18,9 @@ public class ListTaskAdapter extends BaseAdapter {
     private Activity activity;
     private ArrayList<HashMap<String, String>> data;
     private DBHelper database;
-
+    private TextView textView;
     public ListTaskAdapter(Activity a, ArrayList<HashMap<String, String>> d, DBHelper mydb) {
+
         activity = a;
         data = d;
         database = mydb;
@@ -37,7 +38,9 @@ public class ListTaskAdapter extends BaseAdapter {
         return position;
     }
 
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, final ViewGroup parent) {
+        textView= (TextView)parent.findViewById(R.id.credit2);
+
         ListTaskViewHolder holder = null;
         if (convertView == null) {
             holder = new ListTaskViewHolder();
@@ -60,9 +63,11 @@ public class ListTaskAdapter extends BaseAdapter {
 
 
             holder.checkBtn.setOnCheckedChangeListener(null);
+
             if (singleTask.get("status").contentEquals("1")) {
                 holder.task_name.setText(Html.fromHtml("<strike>" + singleTask.get("task") + "</strike>"));
                 holder.checkBtn.setChecked(true);
+
             } else {
                 holder.task_name.setText(singleTask.get("task"));
                 holder.checkBtn.setChecked(false);
@@ -74,6 +79,8 @@ public class ListTaskAdapter extends BaseAdapter {
                     if (isChecked) {
                         database.updateTaskStatus(singleTask.get("id"), 1);
                         tmpHolder.task_name.setText(Html.fromHtml("<strike>" + singleTask.get("task") + "</strike>"));
+                        database.updateCredit(1);
+                        ((MainActivity)activity).fetchCrdit();
                     } else {
                         database.updateTaskStatus(singleTask.get("id"), 0);
                         tmpHolder.task_name.setText(singleTask.get("task"));
@@ -87,6 +94,7 @@ public class ListTaskAdapter extends BaseAdapter {
         }
         return convertView;
     }
+
 }
 
 class ListTaskViewHolder {

@@ -1,20 +1,29 @@
 package com.frsarker.todotask;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.database.Cursor;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.widget.NestedScrollView;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity {
-
+    TextView textView;
     DBHelper mydb;
     LinearLayout empty;
     NestedScrollView scrollView;
@@ -27,7 +36,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_FULLSCREEN);
+
         setContentView(R.layout.activity_main);
 
         mydb = new DBHelper(this);
@@ -39,8 +49,17 @@ public class MainActivity extends AppCompatActivity {
         taskListToday = findViewById(R.id.taskListToday);
         taskListTomorrow = findViewById(R.id.taskListTomorrow);
         taskListUpcoming = findViewById(R.id.taskListUpcoming);
+        textView =  findViewById(R.id.credit2);
+        BottomNavigationView bottomNavigationView = (BottomNavigationView)findViewById(R.id.bottomNavigationView);
+        bottomNavigationView.setBackground(null);
+        bottomNavigationView.getMenu().getItem(1).setEnabled(false);
+        mydb.insertCredit();
+        setupBottomNavigation();
+        fetchCrdit();
     }
-
+    public void fetchCrdit(){
+        textView.setText(mydb.getCredit()+"");
+    }
     public void openAddModifyTask(View view) {
         startActivity(new Intent(this, AddModifyTask.class));
     }
@@ -136,6 +155,26 @@ public class MainActivity extends AppCompatActivity {
                 i.putExtra("id", dataList.get(+position).get("id"));
                 startActivity(i);
             }
+        });
+    }
+
+    private void setupBottomNavigation() {
+        BottomNavigationView bottomNav = findViewById(R.id.bottomNavigationView);
+        bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.home:
+
+                        return true;
+                    case R.id.voucher:
+                        Intent i = new Intent(MainActivity.this, UserVouchers.class);
+                        startActivity(i);
+                        return true;
+                }
+                return false;
+            }
+
         });
     }
 }
