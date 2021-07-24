@@ -24,6 +24,8 @@
             android:name="com.frsarker.todotask.AddModifyTask"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name="com.frsarker.todotask.MainActivity" >
+        </activity>
+        <activity android:name="com.frsarker.todotask.IntroActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -11,7 +11,7 @@
 9-->C:\Users\84911\AndroidStudioProjects\ToDo-Task-App-using-Java-in-Android-master\app\src\main\AndroidManifest.xml
 10
 11    <application
-11-->C:\Users\84911\AndroidStudioProjects\ToDo-Task-App-using-Java-in-Android-master\app\src\main\AndroidManifest.xml:5:5-23:19
+11-->C:\Users\84911\AndroidStudioProjects\ToDo-Task-App-using-Java-in-Android-master\app\src\main\AndroidManifest.xml:5:5-24:19
 12        android:allowBackup="true"
 12-->C:\Users\84911\AndroidStudioProjects\ToDo-Task-App-using-Java-in-Android-master\app\src\main\AndroidManifest.xml:6:9-35
 13        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
@@ -38,19 +38,23 @@
 24            android:windowSoftInputMode="adjustResize" />
 24-->C:\Users\84911\AndroidStudioProjects\ToDo-Task-App-using-Java-in-Android-master\app\src\main\AndroidManifest.xml:15:13-55
 25        <activity android:name="com.frsarker.todotask.MainActivity" >
-25-->C:\Users\84911\AndroidStudioProjects\ToDo-Task-App-using-Java-in-Android-master\app\src\main\AndroidManifest.xml:16:9-22:20
+25-->C:\Users\84911\AndroidStudioProjects\ToDo-Task-App-using-Java-in-Android-master\app\src\main\AndroidManifest.xml:16:9-17:20
 25-->C:\Users\84911\AndroidStudioProjects\ToDo-Task-App-using-Java-in-Android-master\app\src\main\AndroidManifest.xml:16:19-47
-26            <intent-filter>
-26-->C:\Users\84911\AndroidStudioProjects\ToDo-Task-App-using-Java-in-Android-master\app\src\main\AndroidManifest.xml:17:13-21:29
-27                <action android:name="android.intent.action.MAIN" />
-27-->C:\Users\84911\AndroidStudioProjects\ToDo-Task-App-using-Java-in-Android-master\app\src\main\AndroidManifest.xml:18:17-69
-27-->C:\Users\84911\AndroidStudioProjects\ToDo-Task-App-using-Java-in-Android-master\app\src\main\AndroidManifest.xml:18:25-66
-28
-29                <category android:name="android.intent.category.LAUNCHER" />
-29-->C:\Users\84911\AndroidStudioProjects\ToDo-Task-App-using-Java-in-Android-master\app\src\main\AndroidManifest.xml:20:17-77
-29-->C:\Users\84911\AndroidStudioProjects\ToDo-Task-App-using-Java-in-Android-master\app\src\main\AndroidManifest.xml:20:27-74
-30            </intent-filter>
-31        </activity>
-32    </application>
-33
-34</manifest>
+26        </activity>
+27        <activity android:name="com.frsarker.todotask.IntroActivity" >
+27-->C:\Users\84911\AndroidStudioProjects\ToDo-Task-App-using-Java-in-Android-master\app\src\main\AndroidManifest.xml:18:9-23:20
+27-->C:\Users\84911\AndroidStudioProjects\ToDo-Task-App-using-Java-in-Android-master\app\src\main\AndroidManifest.xml:18:19-48
+28            <intent-filter>
+28-->C:\Users\84911\AndroidStudioProjects\ToDo-Task-App-using-Java-in-Android-master\app\src\main\AndroidManifest.xml:19:13-22:29
+29                <action android:name="android.intent.action.MAIN" />
+29-->C:\Users\84911\AndroidStudioProjects\ToDo-Task-App-using-Java-in-Android-master\app\src\main\AndroidManifest.xml:20:17-69
+29-->C:\Users\84911\AndroidStudioProjects\ToDo-Task-App-using-Java-in-Android-master\app\src\main\AndroidManifest.xml:20:25-66
+30
+31                <category android:name="android.intent.category.LAUNCHER" />
+31-->C:\Users\84911\AndroidStudioProjects\ToDo-Task-App-using-Java-in-Android-master\app\src\main\AndroidManifest.xml:21:17-77
+31-->C:\Users\84911\AndroidStudioProjects\ToDo-Task-App-using-Java-in-Android-master\app\src\main\AndroidManifest.xml:21:27-74
+32            </intent-filter>
+33        </activity>
+34    </application>
+35
+36</manifest>
