@@ -26,7 +26,7 @@ public class DBHelper extends SQLiteOpenHelper {
         // TODO Auto-generated method stub
 
         db.execSQL(
-                "CREATE TABLE " + TABLE_NAME + "(id INTEGER PRIMARY KEY, task TEXT, task_at DATETIME)"
+                "CREATE TABLE " + TABLE_NAME + "(id INTEGER PRIMARY KEY, task TEXT, task_at DATETIME,status INTEGER)"
         );
         db.execSQL(
                 "CREATE TABLE " + VOUCHER_TABLE_NAME + "(id INTEGER PRIMARY KEY, voucher_code TEXT)"
@@ -88,6 +88,10 @@ public class DBHelper extends SQLiteOpenHelper {
     }
     public boolean insertCredit() {
         SQLiteDatabase db = this.getWritableDatabase();
+//        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
+//        db.execSQL("DROP TABLE IF EXISTS " + USER_TABLE_NAME);
+//        db.execSQL("DROP TABLE IF EXISTS " + VOUCHER_TABLE_NAME);
+//        onCreate(db);
         ContentValues contentValues = new ContentValues();
         contentValues.put("credit", 0);
         db.insert(USER_TABLE_NAME, null, contentValues);

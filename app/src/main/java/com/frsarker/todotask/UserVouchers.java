@@ -8,10 +8,12 @@ import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.kofigyan.stateprogressbar.StateProgressBar;
 
@@ -27,6 +29,7 @@ public class UserVouchers extends AppCompatActivity {
     int credit;
     Button btnRedeem;
     TextView textView;
+    StateProgressBar stateProgressBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,7 +44,7 @@ public class UserVouchers extends AppCompatActivity {
                 onBackPressed();
             }
         });
-        StateProgressBar stateProgressBar = (StateProgressBar) findViewById(R.id.voucherprogress);
+        stateProgressBar = (StateProgressBar) findViewById(R.id.voucherprogress);
         stateProgressBar.setStateDescriptionData(descriptionData);
 
         listVoucher=  (LinearLayout) findViewById(R.id.list_voucher);
@@ -66,8 +69,8 @@ public class UserVouchers extends AppCompatActivity {
         fetchVoucher();
     }
     public void fetchVoucher(){
+
         stringList = new ArrayList<>();
-        listVoucher.removeAllViews();
         textView.setText(credit+"");
         if(credit<5){
             btnRedeem.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
@@ -79,6 +82,7 @@ public class UserVouchers extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     String voucher = randomStringGenerator.generateString();
+                    voucher = voucher.substring(6,voucher.length());
                     mydb.insertVoucher(voucher);
                     Cursor cursor = mydb.getListVoucher();
                     if(cursor!=null)
@@ -90,11 +94,25 @@ public class UserVouchers extends AppCompatActivity {
                         btnRedeem.setBackgroundColor(Color.GRAY);
                         btnRedeem.setClickable(false);
                     }
+                    if(credit<5){
+                        stateProgressBar.setCurrentStateNumber(StateProgressBar.StateNumber.ONE);
+                    }
+                    else if(credit>=5){
+                        stateProgressBar.setCurrentStateNumber(StateProgressBar.StateNumber.TWO);
+                    }else if(credit>=10){
+                        stateProgressBar.setCurrentStateNumber(StateProgressBar.StateNumber.THREE);
+                    }else if(credit>=15){
+                        stateProgressBar.setCurrentStateNumber(StateProgressBar.StateNumber.FOUR);
+                    }else if(credit>=20){
+                        stateProgressBar.setCurrentStateNumber(StateProgressBar.StateNumber.FIVE);
+                    }
+                    Toast.makeText(getApplicationContext(), "added voucher "+voucher, Toast.LENGTH_SHORT).show();
                 }
             });
             mydb.updateCredit(-5);
         }
         Cursor cursor = mydb.getListVoucher();
+        Log.d("TAGVoucher", "fetchVoucher: "+cursor);
         // Add Buttons
         if(cursor!=null)
          loadDataList(cursor);
@@ -108,12 +126,15 @@ public class UserVouchers extends AppCompatActivity {
             while (cursor.isAfterLast() == false) {
                 String vouch = cursor.getString(0).toString()+""+cursor.getString(1).toString();
                 stringList.add(vouch);
+                Log.d("vocuher", "loadDataList: "+vouch);
                 cursor.moveToNext();
             }
         }
         for (String item:stringList
              ) {
             Button button = new Button(this);
+            button.setBackgroundColor(Color.TRANSPARENT);
+            button.setTextColor(Color.WHITE);
             button.setText(item);
             listVoucher.addView(button);
         }
